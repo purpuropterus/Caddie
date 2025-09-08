@@ -17,6 +17,12 @@ const char* MSG_PIN_TYPE = "Pin Type";
 //! @brief Text for Wind Direction option
 const char* MSG_WIND_DIR = "Wind Direction";
 
+//! @brief Text for Decide Wind from RNG seed option
+const char* MSG_WIND_FROM_RNG_SEED = "Decide Wind from RNG Seed";
+
+//! @brief Text for RNG Seed option
+const char* MSG_RNG_SEED = "RNG Seed";
+
 //! @brief Text for Wind Speed option
 const char* MSG_WIND_SPD =
     CADDIE_LOCALIZE("Wind Speed (mph)", "Wind Speed (m/s)", "Wind Speed (m/s)",

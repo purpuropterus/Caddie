@@ -15,6 +15,12 @@ GlfMenu::GlfMenu()
       mHole(MSG_HOLE, 1, Sp2::Glf::HOLE_MAX),
       mRepeatHole(MSG_REPEAT_HOLE, true),
       mPinType(MSG_PIN_TYPE, ENUM_PIN_TYPE, 0, CADDIE_ENUM_MAX(ENUM_PIN_TYPE)),
+      mWindFromRngSeed(MSG_WIND_FROM_RNG_SEED, false),
+
+      // need to make a new option type for this,
+      // i will do it later, for now it's just an int
+      mRngSeed(MSG_RNG_SEED, 0, 1, 0),
+
       mWindDir(MSG_WIND_DIR, ENUM_WIND_DIR, 0, CADDIE_ENUM_MAX(ENUM_WIND_DIR)),
       mWindSpd(MSG_WIND_SPD, ENUM_WIND_SPD, 0, WIND_SPD_RANDOM),
       mWindSpdRange(MSG_WIND_SPD_RANGE, ENUM_WIND_SPD_RANGE, 0,
@@ -28,6 +34,8 @@ GlfMenu::GlfMenu()
     GetRootPage().AppendOption(&mWindDir);
     GetRootPage().AppendOption(&mWindSpd);
     GetRootPage().AppendOption(&mWindSpdRange);
+    GetRootPage().AppendOption(&mWindFromRngSeed);
+    GetRootPage().AppendOption(&mRngSeed);
     GetRootPage().AppendOption(&mApplyRestart);
     GetRootPage().AppendOption(&mQuitGame);
 }
@@ -59,8 +67,17 @@ void GlfMenu::OnChange() {
         break;
     }
 
-    // Wind speed range
-    mWindSpdRange.SetEnabled(mWindSpd.GetUnsavedValue() == WIND_SPD_RANDOM);
+    // disable wind options based on if deciding wind from rng seed
+
+    bool gettingWindFromRngSeed = mWindFromRngSeed.GetUnsavedValue();
+
+    // wind speed range also only gets enabled if wind speed is set to random
+    bool windSpdIsRandom = mWindSpd.GetUnsavedValue() == WIND_SPD_RANDOM;
+    mWindSpdRange.SetEnabled(windSpdIsRandom && !gettingWindFromRngSeed);
+
+    mRngSeed.SetEnabled(gettingWindFromRngSeed);
+    mWindDir.SetEnabled(!gettingWindFromRngSeed);
+    mWindSpd.SetEnabled(!gettingWindFromRngSeed);
 }
 
 /**

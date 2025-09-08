@@ -10,6 +10,8 @@ extern const char* MSG_MENU_TITLE;
 extern const char* MSG_HOLE;
 extern const char* MSG_REPEAT_HOLE;
 extern const char* MSG_PIN_TYPE;
+extern const char* MSG_WIND_FROM_RNG_SEED;
+extern const char* MSG_RNG_SEED;
 extern const char* MSG_WIND_DIR;
 extern const char* MSG_WIND_SPD;
 extern const char* MSG_WIND_SPD_RANGE;

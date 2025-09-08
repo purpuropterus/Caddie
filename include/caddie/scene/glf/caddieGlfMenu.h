@@ -38,6 +38,13 @@ private:
     MenuIntOption mHole;
     MenuBoolOption mRepeatHole;
     MenuEnumOption mPinType;
+
+    MenuBoolOption mWindFromRngSeed;
+
+    // need to make a new option type for this,
+    // i will do it later, for now it's just an int
+    MenuIntOption mRngSeed;
+
     MenuEnumOption mWindDir;
     MenuEnumOption mWindSpd;
     MenuEnumOption mWindSpdRange;
