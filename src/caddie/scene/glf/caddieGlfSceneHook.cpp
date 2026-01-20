@@ -6,6 +6,7 @@
 #include "caddieInputMgr.h"
 #include "caddieMenuMgr.h"
 
+#include <RP/RPSystem.h>
 #include <RP/RPSystem/RPSysSceneMgr.h>
 #include <RP/RPSystem/RPSysSceneCreator.h>
 #include <RPGraphics/RPGrpRenderer.h>

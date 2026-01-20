@@ -21,6 +21,7 @@ void main() {
     // Always show exception handler
     static const u16 scEmptyCombo[] = {0};
     EGG::Exception::setUserCallback(scEmptyCombo);
+#endif
 
 #ifdef CADDIE_REGION_NTSC_U
    MapFile::GetInstance().LoadFromDVD("modules/main_NTSC_U.map",
