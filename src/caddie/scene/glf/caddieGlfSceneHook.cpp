@@ -634,7 +634,7 @@ bool GlfSceneHook::ShouldShowTutorial() { return false; }
 #if CADDIE_REGION_NTSC_U
 kmBranch(0x803fa370, GlfSceneHook::ShouldShowTutorial);
 #elif CADDIE_REGION_PAL
-kmBranch(0x803fa574, GlfSceneHook::ShouldShowTutorial);
+kmBranch(0x803fa690, GlfSceneHook::ShouldShowTutorial);
 #endif
 
 /**
