@@ -10,7 +10,6 @@ namespace caddie {
 bool GlfUtil::IsCurrentFirstHole() {
     Sp2::Glf::GlfConfig& main = Sp2::Glf::GlfConfig::getInstance();
     return IsFirstHoleInternal(main.getGamemode(), main.getCurrentHole());
-    // return false;
 }
 
 /**
@@ -60,7 +59,6 @@ bool GlfUtil::IsFirstHole(Sp2::Glf::GameMode gm, u32 hole) {
 bool GlfUtil::IsCurrentRoundOver() {
     Sp2::Glf::GlfConfig& main = Sp2::Glf::GlfConfig::getInstance();
     return IsRoundOverInternal(main.getGamemode(), main.getCurrentHole());
-    // return false;
 }
 
 /**
@@ -70,7 +68,6 @@ bool GlfUtil::IsCurrentRoundOver() {
 bool GlfUtil::IsNextRoundOver() {
     Sp2::Glf::GlfConfig& main = Sp2::Glf::GlfConfig::getInstance();
     return IsRoundOverInternal(main.getGamemode(), main.getCurrentHole() + 1);
-    // return false;
 }
 
 /**

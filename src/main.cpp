@@ -22,9 +22,12 @@ void main() {
     static const u16 scEmptyCombo[] = {0};
     EGG::Exception::setUserCallback(scEmptyCombo);
 
-    // Open symbol map
-    MapFile::GetInstance().LoadFromDVD("modules/main_NTSC_U.map",
-                                       MapFile::LINK_DYNAMIC);
+#ifdef CADDIE_REGION_NTSC_U
+   MapFile::GetInstance().LoadFromDVD("modules/main_NTSC_U.map",
+                                      MapFile::LINK_DYNAMIC);
+#elif CADDIE_REGION_PAL
+   MapFile::GetInstance().LoadFromDVD("modules/main_PAL.map",
+                                      MapFile::LINK_DYNAMIC);
 #endif
 
     // Skip MotionPlus video

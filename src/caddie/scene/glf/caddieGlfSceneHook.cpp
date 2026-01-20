@@ -6,7 +6,6 @@
 #include "caddieInputMgr.h"
 #include "caddieMenuMgr.h"
 
-#include "types_rp.h"
 #include <RP/RPSystem/RPSysSceneMgr.h>
 #include <RP/RPSystem/RPSysSceneCreator.h>
 #include <RPGraphics/RPGrpRenderer.h>
@@ -97,8 +96,7 @@ void GlfSceneHook::OnCalculate(RPSysScene* scene) {
 
     // pause game if menu is open
     // only in glf scene for now
-    if (RPSysSceneMgr::getInstance().getCurrentSceneID() == 
-        RPSysSceneCreator::SCENE_GLF) {
+    if (scene->getSceneID() == RPSysSceneCreator::SCENE_GLF) {
         Sp2::Glf::GlfMain::getInstance().setPause(isMenuOpen);
     }
 
@@ -108,8 +106,7 @@ void GlfSceneHook::OnCalculate(RPSysScene* scene) {
 
     // if game is paused, stop timer, else start it
     // only in glf scene for now
-    if (RPSysSceneMgr::getInstance().getCurrentSceneID() ==
-        RPSysSceneCreator::SCENE_GLF) {
+    if (scene->getSceneID() == RPSysSceneCreator::SCENE_GLF) {
         bool paused = Sp2::Glf::GlfMain::getInstance().getPause();
         if (paused) {
             sTimer->Stop();
@@ -182,8 +179,7 @@ void GlfSceneHook::OnUserDraw(RPSysScene* scene) {
 
     // Current pin display
     // only show in glf scene
-    if (RPSysSceneMgr::getInstance().getCurrentSceneID() ==
-        RPSysSceneCreator::SCENE_GLF)
+    if (scene->getSceneID() == RPSysSceneCreator::SCENE_GLF)
     {
         u32 hole = Sp2::Glf::GlfConfig::getInstance().getCurrentHole();
         u32 pin = Sp2::Glf::GlfConfig::getInstance().getPin();
@@ -510,7 +506,7 @@ void GlfSceneHook::Apply_Wind() {
         int min = 0;
         int max = Sp2::Glf::WIND_MAX;
 
-            switch (GetMenu().GetWindSpdRange()) {
+        switch (GetMenu().GetWindSpdRange()) {
         // 0-10 m/s (0-20 mph)
         case RANGE_0_10:
             max = 10;

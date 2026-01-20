@@ -74,6 +74,10 @@ loadToMainRAM__Q23EGG9DvdRipperFPCcPUcPQ23EGG4HeapQ33EGG9DvdRipper15EAllocDirect
 # RP/RPSystem/RPSysSceneMgr
 sInstance__13RPSysSceneMgr=0x806f5338
 
+# RP/RPSystem/RPSysSysMsgWinMgr
+CheckInput__17RPSysSysMsgWinMgrFv=0x802355f4
+sInstance__17RPSysSysMsgWinMgr=0x806f5380
+
 # RP/RPSystem/RPSysSceneCreator
 changeSceneAfterFade__17RPSysSceneCreatorFiQ34nw4r2ut5Color=0x8022f074
 sInstance__17RPSysSceneCreator=0x806f5328
@@ -109,7 +113,7 @@ Calc__9RPGlfBallFUl=0x80413e88
 sFlags__9RPGlfBall=0x806fdfbc
 
 # Sports2/Glf/RPGlfPlayerManager
-sInstance__18RPGlfPlayerManager=0x806f5b58
+sInstance__18RPGlfPlayerManager=0x806f5b08
 
 
 PSMTXIdentity=0x8003e730
