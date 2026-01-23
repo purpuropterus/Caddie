@@ -62,20 +62,22 @@ void MenuMgr::Calc() {
         if ((trig & InputMgr::BTN_UP && mControlDAS[i] == sControlMaxDAS) ||
             // Auto repeat up
             (held & InputMgr::BTN_UP && mControlARR[i] <= 0)) {
-            // Wrap around
-            if (--mCursor < 0) {
-                mCursor = mOpenPage->GetNumOptions() - 1;
-            }
+            // skip skipped options and wrap around
+            int startCursor = mCursor;
+            do {
+                mCursor = (mCursor - 1 + mOpenPage->GetNumOptions()) % mOpenPage->GetNumOptions();
+            } while (mOpenPage->GetOption(mCursor).IsSkipped() && mCursor != startCursor);
         }
         // Initial down input before DAS
         else if ((trig & InputMgr::BTN_DOWN &&
                   mControlDAS[i] == sControlMaxDAS) ||
                  // Auto repeat down
                  (held & InputMgr::BTN_DOWN && mControlARR[i] <= 0)) {
-            // Wrap around
-            if (++mCursor >= mOpenPage->GetNumOptions()) {
-                mCursor = 0;
-            }
+            // skip skipped options and wrap around
+            int startCursor = mCursor;
+            do {
+                mCursor = (mCursor + 1) % mOpenPage->GetNumOptions();
+            } while (mOpenPage->GetOption(mCursor).IsSkipped() && mCursor != startCursor);
         }
         // Initial right input before DAS
         else if ((trig & InputMgr::BTN_RIGHT &&

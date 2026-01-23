@@ -13,7 +13,7 @@ class IMenuOption : public Pane {
 public:
     static u32 GetNodeOffset() { return offsetof(IMenuOption, mNode); }
 
-    IMenuOption(const char* name) : mIsEnabled(true) {
+    IMenuOption(const char* name) : mIsEnabled(true), mIsSkipped(false) {
         // Option name
         mNameText.SetText(name);
 
@@ -78,6 +78,9 @@ public:
         UpdateString();
     }
 
+    bool IsSkipped() const { return mIsSkipped; }
+    void SetSkipped(bool skip) { mIsSkipped = skip; }
+
 private:
     //! @brief Node for intrusive list
     TLinkListNode mNode;
@@ -89,6 +92,9 @@ protected:
     TextBox mValueText;
     //! @brief Enable option
     bool mIsEnabled;
+    //! @brief Skip option
+    //! if enabled, the cursor can't go over it
+    bool mIsSkipped;
 
 private:
     static const nw4r::ut::Color sEnabledTextColor;
